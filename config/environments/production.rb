@@ -117,4 +117,29 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+
+
+ # all connection to local server
+  config.hosts.clear
+  # Uncomment if you wish to allow Action Cable access from any origin.
+  # config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  # local server is host if you working non localhost
+  host = 'https://immense-caverns-23129.herokuapp.com/'
+  # Use this if developing on localhost.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: host }
+
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    user_name: 'eeukst@gmail.com',
+    password: 'dddvqxboungvnmym',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
 end
