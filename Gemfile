@@ -8,6 +8,8 @@ gem 'kaminari'
 gem 'devise'
 gem 'cancancan'
 
+# adding bootstrap 5.0
+gem 'bootstrap', '~> 5.0.2'
 # rubocop
 gem 'rubocop', require: false
 # addin bcrypt gem for password encryption
