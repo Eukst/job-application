@@ -154,7 +154,11 @@ GEM
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
+<<<<<<< HEAD
     pg (1.4.1)
+=======
+    pg (1.1.4)
+>>>>>>> 87395b0e2ef24cf530727676850fee884a149c01
     popper_js (2.11.5)
     public_suffix (4.0.7)
     puma (5.6.4)
@@ -289,7 +293,11 @@ DEPENDENCIES
   active_storage_validations
   bcrypt (= 3.1.13)
   bootsnap (>= 1.4.4)
+<<<<<<< HEAD
   bootstrap (~> 5.0.2)
+=======
+  bootstrap (~> 5.2.0)
+>>>>>>> 87395b0e2ef24cf530727676850fee884a149c01
   bootstrap-sass (= 3.4.1)
   bootstrap-will_paginate (= 1.0.0)
   byebug
