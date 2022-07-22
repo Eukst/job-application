@@ -15,8 +15,8 @@ gem 'rubocop', require: false
 # addin bcrypt gem for password encryption
 gem 'bcrypt', '3.1.13'
 # adding bootstrap-sass gem in Gemfile
-gem 'bootstrap-sass', '3.4.1'
-gem 'bootstrap', '~> 5.2.0'
+# gem 'bootstrap-sass', '3.4.1'
+# gem 'bootstrap', '~> 5.2.0'
 # adding gem for pagination 
 gem 'will_paginate','3.3.0'
 gem 'bootstrap-will_paginate','1.0.0'
