@@ -1,0 +1,37 @@
+
+<nav class="navbar navbar-expand-lg navbar-light mx-auto " style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Job App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 ml-10 mb-lg-0 justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/static_pages/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "  href="/static_pages/help">Help</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/static_pages/contact">Contact</a>
+        </li>
+<% if signed_in? %>
+  <li class="nav-item justify-content-end">
+          <%= link_to "Sign out", destroy_user_session_path,class:"btn btn-primary btn-sm text-white text-decoration-none ",:method => :delete %>
+          </li>
+<%else%>
+          <li class="nav-item justify-content-end">
+          <button type="button" class="btn btn-primary btn-sm" ><a href="/users/sign_up" class="text-white text-decoration-none">Sign up</a></button>
+           <button type="button" class="btn btn-secondary btn-sm" ><a href="/users/sign_in" class="text-white text-decoration-none">Sign In</a></button>
+          </li>
+<%end%>
+         <div>
+          
+          </div>
+      </div>
+    </div>
+  </nav>

@@ -97,5 +97,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
+  config.hosts.clear
 
 end
