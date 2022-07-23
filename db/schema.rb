@@ -35,15 +35,15 @@ ActiveRecord::Schema.define(version: 2022_07_22_131845) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.text "address", null: false
-    t.integer "mobile_no", null: false
-    t.string "city", null: false
-    t.string "state", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.text "address"
+    t.integer "mobile_no"
+    t.string "city"
+    t.string "state"
     t.string "user_role"
     t.boolean "admin", default: false
-    t.integer "pincode", null: false
+    t.integer "pincode"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

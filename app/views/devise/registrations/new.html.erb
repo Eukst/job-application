@@ -1,8 +1,55 @@
-<h2>Sign up</h2>
+<br>
+<br>
+<br><h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+ 
+ <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, autofocus: true, autocomplete: "address"%>
+  </div>
+<div class="field">
+    <%= f.label :mobile_no %><br />
+    <%= f.telephone_field :mobile_no, autofocus: true, autocomplete: "mobile_no"%>
+  </div>
+ <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autofocus: true, autocomplete: "city"%>
+  </div>
 
+
+<div class="field">
+ <%= f.label :user_role %><br />
+<%= f.select :user_role, [ "Job Seeker", "Job Provider"]%>
+</div>
+
+<div class="field">
+ <%= f.label :state %><br />
+<%= f.select :state, [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar",
+      "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir",
+      "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
+      "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
+      "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh",
+      "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", 
+      "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"]%>
+</div>
+
+
+ <div class="field">
+    <%= f.label :pincode %><br />
+    <%= f.number_field :pincode, autofocus: true, autocomplete: "pincode",min:1%>
+  </div>
+
+ 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
