@@ -68,12 +68,14 @@
   <% if current_user.admin? %>
     <h1> Welcome Admin </h1> 
   <%else%>
+
     <%if current_user.user_role.include?"Job Seeker"%>
-   
-      <h1> Welcome Job Seeker</h1>
-    <% end%>
-    <%if current_user.user_role.include?"Employer" %> 
+   <%= render partial:"static_pages/jobseekerview" %>
+  <% end%>
+<%if current_user.user_role.include?"Employer" %> 
       <h1> Welcome Employer</h1>
+          <%= render partial:"static_pages/employerview" %>
+
     <% end%>
   <%end%>
 <%end%>

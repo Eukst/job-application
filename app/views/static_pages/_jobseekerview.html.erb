@@ -1,0 +1,27 @@
+     
+    <h1>Jobs</h1>
+<%  @jobs = Job.all %>
+<table>
+  <thead>
+    <tr>
+      <th>Job title</th>
+      <th>Experience</th>
+      <th>Salary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.job_title %></td>
+        <td><%= job.experience %></td>
+        <td><%= job.salary %></td>
+        <td><%= job.user_id %></td>
+        <td><%= link_to 'Show', job %></td>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

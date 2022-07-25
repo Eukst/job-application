@@ -1,3 +1,5 @@
+#frozen_string_literal:true
+
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
 
@@ -8,6 +10,13 @@ class JobsController < ApplicationController
 
   # GET /jobs/1 or /jobs/1.json
   def show
+    if user_signed_in? && (current_user.user_role.include? 'Employer')
+      #@jobs = Job.where(user_id: current_user.id)
+      #jobs_ids = @job.id
+      #p jobs_ids
+      #apply_user_ids = ApplyJob.where('job_id IN (?)', jobs_ids).pluck(:user_id).uniq
+      @user_apply = @job.users   #.where(id: apply_user_ids)
+    end
   end
 
   # GET /jobs/new
