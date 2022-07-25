@@ -19,11 +19,17 @@
   <strong>Salary:</strong>
   <%= @job.salary %>
 </p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<% if user_signed_in?%>
+  <% if current_user.user_role.include?"Employer" or current_user.admin?%>
+<%= link_to 'Edit', edit_job_path(@job) %> 
 <%= link_to 'Back', jobs_path %>
+<%else%>
+<%= link_to 'Back', root_path %>
 
-
+<%end%>
+<%end%>
+<% if user_signed_in?%>
+  <% if current_user.user_role.include?"Employer"%>
     <table>
   <thead>
     <tr>
@@ -45,3 +51,5 @@
     <% end %>
   </tbody>
 </table>
+<%end%>
+<%end%>

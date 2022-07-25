@@ -27,8 +27,8 @@
   </div>
 <% %>
  <div class="field">
-    <%= form.label :user_id %><br />
-    <%= form.number_field :user_id, autofocus: true, value:current_user.id%>
+    <%#= form.label :user_id  %><br />
+    <%= form.hidden_field :user_id, autofocus: true, value:current_user.id%>
   </div>
 
   <div class="actions">

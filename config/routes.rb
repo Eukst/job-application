@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/about'
   devise_for :users
-  resources :job
+
   resources :users
 end
