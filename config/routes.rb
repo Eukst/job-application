@@ -8,5 +8,4 @@ Rails.application.routes.draw do
   devise_for :users
   resources :job
   resources :users
-
 end
