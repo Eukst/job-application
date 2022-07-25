@@ -1,5 +1,9 @@
 # frozen_string_literal:true
+
 Rails.application.routes.draw do
+  resources :apply_jobs
+
+  get 'apply_job/cancel'
   resources :jobs
   root 'static_pages#home'
   get 'static_pages/help'
