@@ -1,3 +1,6 @@
+# frozen_string_literal:true
+
+# class for static pages
 class StaticPagesController < ApplicationController
   def home; end
 
