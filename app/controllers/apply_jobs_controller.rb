@@ -1,19 +1,35 @@
 # frozen_string_literal:true
 
-# controller to manage apply to job and withdraw job application
 class ApplyJobsController < ApplicationController
-  def show
+  def create
     if user_signed_in? && (current_user.user_role.include? 'Job Seeker')
-      job_id = params[:id].to_i
-      user_id = current_user.id
-      @apply_job = ApplyJob.create(user_id: user_id, job_id: job_id)
+      @apply_job = ApplyJob.create(user_id: params[:user_id].to_i, job_id: params[:job_id].to_i)
       if @apply_job.valid?
-        @apply_job.save
         flash[:success] = 'Applied to Job  Successfully '
-
+        respond_to do |format|
+          format.html { redirect_to job_path(params[:job_id].to_i) }
+          format.json { head :no_content }
+          format.js   { render layout: false }
+        end
+        @apply_job.save
+      else
+        flash[:error] = 'Already applied for job'
+        respond_to do |format|
+          format.html { redirect_to job_path(params[:job_id].to_i) }
+          format.json { head :no_content }
+          format.js   { render layout: false }
+        end
       end
     end
   end
 
-  def destroy; end
+  def destroy
+    @apply_job = ApplyJob.find_by(user_id: params[:user_id].to_i, job_id: params[:job_id].to_i)
+    @apply_job.destroy
+    respond_to do |format|
+      format.html { redirect_to job_path(params[:job_id].to_i) }
+      format.json { head :no_content }
+      format.js   { render layout: false }
+    end
+  end
 end

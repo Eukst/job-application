@@ -4,6 +4,8 @@
 class ApplyJob < ApplicationRecord
   belongs_to :user
   belongs_to :job
-  validates :user_id, presence: true, uniqueness: true
-  validates :job_id, presence: true, uniqueness: true
+  #validates :apply_job, uniqueness: { scope: [:user_id, :job_id] }
+  validates :job_id, uniqueness: { scope: [:user_id] }
+
+
 end

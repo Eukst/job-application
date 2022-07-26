@@ -1,9 +1,8 @@
 # frozen_string_literal:true
 
 Rails.application.routes.draw do
-  resources :apply_jobs
 
-  get 'apply_job/cancel'
+  resources :apply_jobs , only: [:create, :destroy]
   resources :jobs
   root 'static_pages#home'
   get 'static_pages/help'

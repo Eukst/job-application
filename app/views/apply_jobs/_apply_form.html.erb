@@ -1,0 +1,10 @@
+<%# unless current_user?(@user) %>
+<div id="apply_form">
+
+<% if applied?(current_user.id)%>
+<%= render 'apply_jobs/cancel' %>
+<% else %>
+<%= render 'apply_jobs/apply' %>
+<%end%>
+</div>
+<%#end%> 
