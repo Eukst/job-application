@@ -1,0 +1,11 @@
+
+<pre>
+  <%= @greeting %>, <%= @job.user.first_name%>
+  You Recived an Application form <b> <%=@full_name%> </b>for Job Role <strong><%= @job.job_title%></strong>
+  
+  The Details of Candidate are as Follows :~
+  Candidate Name : <%=@full_name%>
+  Candidate Email : <%=@user.email%>
+  
+  <b><%= link_to 'View Job',job_url(id:@job.id)%></b>
+ </pre>
