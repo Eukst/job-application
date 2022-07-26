@@ -1,37 +1,81 @@
-
-<nav class="navbar navbar-expand-lg navbar-light mx-auto " style="background-color: #e3f2fd;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Job App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 ml-10 mb-lg-0 justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/static_pages/about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link "  href="/static_pages/help">Help</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/static_pages/contact">Contact</a>
-        </li>
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4">Job Application</span>
+      </a>
+         <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="/static_pages/help" class="nav-link">Help</a></li>
+        <li class="nav-item"><a href="/static_pages/contact" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="/static_pages/about" class="nav-link">About</a></li>
+      </ul>
 <% if signed_in? %>
-  <li class="nav-item justify-content-end">
-          <%= link_to "Sign out", destroy_user_session_path,class:"btn btn-primary btn-sm text-white text-decoration-none ",:method => :delete %>
-          </li>
+<div class="col-md-3 text-end">
+          <%= link_to "Sign out", destroy_user_session_path,class:"btn btn-primary",:method => :delete %>
+        </div>
 <%else%>
-          <li class="nav-item justify-content-end">
-          <button type="button" class="btn btn-primary btn-sm" ><a href="/users/sign_up" class="text-white text-decoration-none">Sign up</a></button>
-           <button type="button" class="btn btn-secondary btn-sm" ><a href="/users/sign_in" class="text-white text-decoration-none">Sign In</a></button>
-          </li>
+   <div class="col-md-3 text-end">
+        <button type="button" class="btn btn-outline-primary me-2"><a href="/users/sign_in" class="text-decoration-none">Sign In</a></button>
+        <button type="button" class="btn btn-primary"><a href="/users/sign_up" class="text-white text-decoration-none">Sign up</a></button>
+      </div>
 <%end%>
-         <div>
-          
-          </div>
+    </header>
+  </div>
+
+<% if !user_signed_in? %>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
-  </nav>
+    <div class="carousel-item">
+      <img src="" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://th.bing.com/th/id/OIP.6y5KzGkMB_Z0yhjBe8934QHaD4?w=345&h=181&c=7&r=0&o=5&pid=1.7" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<% end%>
+
+<%if user_signed_in? %>
+  <% if current_user.admin? %>
+    <h1> Welcome Admin </h1> 
+  <%else%>
+    <%if current_user.user_role.include?"Job Seeker"%>
+   
+      <h1> Welcome Job Seeker</h1>
+    <% end%>
+    <%if current_user.user_role.include?"Employer" %> 
+      <h1> Welcome Employer</h1>
+    <% end%>
+  <%end%>
+<%end%>
+
+
