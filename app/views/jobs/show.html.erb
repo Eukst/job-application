@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Experience:</strong>
+  <strong>Experience In Years:</strong>
   <%= @job.experience %>
 </p>
 
@@ -19,10 +19,17 @@
   <strong>Salary:</strong>
   <%= @job.salary %>
 </p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+
+
 <% if user_signed_in?%>
   <% if current_user.user_role.include?"Employer" or current_user.admin?%>
 <%= link_to 'Edit', edit_job_path(@job) %> 
-<%= link_to 'Back', jobs_path %>
+<%= link_to 'Show All Jobs', jobs_path %>
 <%else%>
 <%= link_to 'Back', root_path %>
 <%= link_to 'Apply Now', apply_job_path(@job)%>
