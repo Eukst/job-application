@@ -128,7 +128,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   # local server is host if you working non localhost
-  host = 'https://immense-caverns-23129.herokuapp.com/'
+  host = 'https://job-application-manojsharma.herokuapp.com'
   # Use this if developing on localhost.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: host }
