@@ -6,5 +6,8 @@
 
 <%end%>
 <%end%>
-<%= link_to 'Show All Jobs', jobs_path %>
-
+<%if current_user.user_role.include?"Employer"%>
+   <%= link_to 'Show All Jobs', root_path %>
+<%else%>
+    <%= link_to 'Show All Jobs', jobs_path %>
+<%end%>

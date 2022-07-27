@@ -1,2 +1,57 @@
-<h1>UserProfiles#show</h1>
-<p>Find me in app/views/user_profiles/show.html.erb</p>
+
+    <table>
+  <thead>
+    <tr>
+      <th>Name </th>
+      <th>Email</th>
+      <th>Mobile No.</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+   
+        <td><%= @user.first_name %></td>
+        <td><%= @user.email %></td>
+        <td><%= @user.mobile_no %></td>
+      
+      </tr>
+  
+  </tbody>
+</table>
+
+<%if user_signed_in?%>
+ <% if current_user.admin? %>
+ <h1> Welcome Admin </h1>
+     <h1> Applied Jobs</h1>
+  <% user=User.find(@user.id)%>
+
+<%  @jobs = user.jobs %>
+<%@jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(5)%> 
+<%= paginate @jobs %>
+<table>
+  <thead>
+    <tr>
+      <th>Job title</th>
+      <th>Experience</th>
+      <th>Salary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.job_title %></td>
+        <td><%= job.experience %></td>
+        <td><%= job.salary %></td>
+        <td><%= job.user_id %></td>
+        <td><%= link_to 'Show', job %></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @jobs %>
+ <%end%>
+ <%end%>

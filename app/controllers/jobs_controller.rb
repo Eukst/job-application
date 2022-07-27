@@ -1,7 +1,8 @@
-#frozen_string_literal:true
+# frozen_string_literal:true
 
+# controller to manage jobs 
 class JobsController < ApplicationController
-  before_action :set_job, only: %i[ show edit update destroy ]
+  before_action :set_job, only: %i[show edit update destroy]
 
   # GET /jobs or /jobs.json
   def index
@@ -11,11 +12,11 @@ class JobsController < ApplicationController
   # GET /jobs/1 or /jobs/1.json
   def show
     if user_signed_in? && (current_user.user_role.include? 'Employer')
-      #@jobs = Job.where(user_id: current_user.id)
-      #jobs_ids = @job.id
-      #p jobs_ids
-      #apply_user_ids = ApplyJob.where('job_id IN (?)', jobs_ids).pluck(:user_id).uniq
-      @user_apply = @job.users   #.where(id: apply_user_ids)
+      # @jobs = Job.where(user_id: current_user.id)
+      # jobs_ids = @job.id
+      # p jobs_ids
+      # apply_user_ids = ApplyJob.where('job_id IN (?)', jobs_ids).pluck(:user_id).uniq
+      @user_apply = @job.users # .where(id: apply_user_ids)
     end
   end
 
@@ -25,8 +26,7 @@ class JobsController < ApplicationController
   end
 
   # GET /jobs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /jobs or /jobs.json
   def create
@@ -34,7 +34,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to job_url(@job), notice: "Job was successfully created." }
+        format.html { redirect_to job_url(@job), notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
+        format.html { redirect_to job_url(@job), notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,19 +61,20 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
+      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_job
-      @job = Job.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def job_params
-      params.require(:job).permit(:job_title, :experience, :salary ,:user_id,:description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_job
+    @job = Job.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def job_params
+    params.require(:job).permit(:job_title, :experience, :salary, :user_id, :description)
+  end
 end
