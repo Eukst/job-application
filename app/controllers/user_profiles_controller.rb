@@ -3,7 +3,13 @@
 # comtroller to manage user profiles
 class UserProfilesController < ApplicationController
   before_action :set_user, only: %i[show destroy]
-  def show; end
+  def show
+    if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && (current_user.admin == false)
+      user = User.find(current_user.id)
+      @jobs_user = user.jobs
+      @jobs_user = Kaminari.paginate_array(@jobs_user).page(params[:page]).per(5)
+    end
+  end
 
   def destroy
     @user.destroy
