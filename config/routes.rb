@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   devise_for :users ,controllers: {
     sessions: 'devise/sessions'
+    # registrations: 'devise/registrations'
+   
   }
+  resources :user_profiles ,only:[:show]
   resources :users
 end
