@@ -22,7 +22,8 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
-    @job = Job.new
+    @job = current_user.jobs.new
+    
   end
 
   # GET /jobs/1/edit

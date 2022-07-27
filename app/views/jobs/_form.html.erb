@@ -29,9 +29,8 @@
     <%= form.text_area :description %>
   </div>
 
- <div class="field">
-    <%#= form.label :user_id  %><br />
-    <%= form.hidden_field :user_id, autofocus: true, value:@job.user_id%>
+ <div class="field"><br />
+    <%= form.hidden_field :user_id, autofocus: true, value:get_user_id(@job)%>
   </div>
 
   <div class="actions">
