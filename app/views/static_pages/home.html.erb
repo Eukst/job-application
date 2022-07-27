@@ -9,8 +9,22 @@
         <li class="nav-item"><a href="/static_pages/help" class="nav-link">Help</a></li>
         <li class="nav-item"><a href="/static_pages/contact" class="nav-link">Contact</a></li>
         <li class="nav-item"><a href="/static_pages/about" class="nav-link">About</a></li>
+      <% if signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Settings
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "View Profile", user_path(id:current_user.id),class:"dropdown-item" %>
+               <%= link_to "Edit Profile", edit_user_registration_path,class:"dropdown-item" %>
+             
+          </ul>
+        </li>
+      <%end%>     
       </ul>
+      
 <% if signed_in? %>
+
 <div class="col-md-3 text-end">
           <%= link_to "Sign out", destroy_user_session_path,class:"btn btn-primary",:method => :delete %>
         </div>
@@ -64,19 +78,19 @@
 </div>
 <% end%>
 
-<%if user_signed_in? %>
-  <% if current_user.admin? %>
-    <h1> Welcome Admin </h1> 
-  <%else%>
+<%if user_signed_in?%>
 
+  <% if current_user.admin? %>
+    <h1> Welcome Admin </h1>
+   <%= render partial:"static_pages/adminview" %>
+  <%else%>
     <%if current_user.user_role.include?"Job Seeker"%>
-   <%= render partial:"static_pages/jobseekerview" %>
-  <% end%>
-<%if current_user.user_role.include?"Employer" %> 
+      <%= render partial:"static_pages/jobseekerview" %>
+    <% end%>
+    <%if current_user.user_role.include?"Employer" %> 
       <h1> Welcome Employer</h1>
       <%= link_to "Create New Job ", new_job_path %>
-          <%= render partial:"static_pages/employerview" %>
-
+      <%= render partial:"static_pages/employerview" %>
     <% end%>
   <%end%>
 <%end%>
