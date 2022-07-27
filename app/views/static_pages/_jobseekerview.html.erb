@@ -1,6 +1,37 @@
-     
-    <h1>Jobs</h1>
+
+<hr>
+    <h1> All Jobs</h1>
 <%  @jobs = Job.all %>
+<table>
+  <thead>
+    <tr>
+      <th>Job title</th>
+      <th>Experience</th>
+      <th>Salary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.job_title %></td>
+        <td><%= job.experience %></td>
+        <td><%= job.salary %></td>
+        <td><%= job.user_id %></td>
+        <td><%= link_to 'Show', job %></td>
+        <%if applied_to_job?(current_user.id,job.id) %>
+        <td><%= link_to 'Applied Already', job %></td>
+        <%end%>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+  <hr>   
+    <h1> Applied Jobs</h1>
+    <% user=User.find(current_user.id)%>
+ 
+<%  @jobs = user.jobs %>
 <table>
   <thead>
     <tr>

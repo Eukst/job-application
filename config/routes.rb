@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     # registrations: 'devise/registrations'
    
   }
-  resources :user_profiles ,only:[:show]
+  resources :user_profiles ,only:[:show,:destroy]
   resources :users
 end

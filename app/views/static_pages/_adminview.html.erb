@@ -1,5 +1,7 @@
     <h1>Jobs Created</h1>
 <% @jobs = Job.all %> <!-- for notes purpose -->
+<%@jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(3)%>
+<%= paginate @jobs %>
 <table>
   <thead>
     <tr>
@@ -27,9 +29,11 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @jobs %>
     <h1>User Created</h1>
 <% @users = User.all %> <!-- for notes purpose -->
+<%@users = Kaminari.paginate_array(@users).page(params[:page]).per(5)%>
+<%= paginate @users %>
 <table>
   <thead>
     <tr>
@@ -50,11 +54,11 @@
         <td><%= user.email %></td>
         <td><%= user.address %></td>
          <td><%= user.city %></td>
-        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Show', user_profile_path(user.id) %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', user_profile_path(user.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @users %>
