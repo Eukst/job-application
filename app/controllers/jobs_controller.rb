@@ -12,13 +12,11 @@ class JobsController < ApplicationController
   # GET /jobs/1 or /jobs/1.json
   def show
     if user_signed_in? && (current_user.user_role.include? 'Employer')
-      # @jobs = Job.where(user_id: current_user.id)
-      # jobs_ids = @job.id
-      # p jobs_ids
-      # apply_user_ids = ApplyJob.where('job_id IN (?)', jobs_ids).pluck(:user_id).uniq
+   
       @user_apply = @job.users # .where(id: apply_user_ids)
-    end
+      @user_apply_paginate = Kaminari.paginate_array(@user_apply).page(params[:page]).per(8)
   end
+end
 
   # GET /jobs/new
   def new
@@ -62,7 +60,7 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Job was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

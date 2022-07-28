@@ -91,9 +91,8 @@
       <%= render partial:"static_pages/jobseekerview", :locals => {:jobs => @jobs,:jobs_paginate_jobseeker => @jobs_paginate_jobseeker} %>
     <% end%>
     <%if current_user.user_role.include?"Employer" %> 
-      <h1> Welcome Employer</h1>
-      <%= link_to "Create New Job ", new_job_path %>
-      <%= render partial:"static_pages/employerview" %>
+     <h3> Welcome Employer</h3>
+      <%= render partial:"static_pages/employerview", :locals => {:jobs => @jobs} %>
     <% end%>
   <%end%>
 <%end%>

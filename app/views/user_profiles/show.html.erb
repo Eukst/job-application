@@ -1,38 +1,45 @@
- <table>
+
+<div class="container container-fluid">
+<h3> User Details</h3>
+<table class="table table-bordered">
   <thead>
-    <tr>
-      <th>Name </th>
-      <th>Email</th>
-      <th>Mobile No.</th>
-      <th colspan="3"></th>
+    <tr class="text-center">
+      <th scope="col">Name</th>
+     <td><%= @user.first_name %> <%=@user.last_name%></td>
+      
     </tr>
   </thead>
-
   <tbody>
-      <tr>
-   
-        <td><%= @user.first_name %></td>
-        <td><%= @user.email %></td>
-        <td><%= @user.mobile_no %></td>
-      
-      </tr>
+    <tr class="text-center">
+      <th scope="row">Email</th>
+       <td><%= @user.email %></td>
   
+    </tr>
+    <tr class="text-center">
+      <th scope="row">Mobile No.</th>
+     <td><%= @user.mobile_no %></td>
+   
+    </tr>
+    <tr class="text-center">
+      <th scope="row">State</th>
+     <td><%= @user.state %></td>
+    </tr>
   </tbody>
 </table>
+</div>
 
 
-
-
-<%if user_signed_in? && (current_user.user_role.include?'Job Seeker') &&(current_user.admin == false) %>
-<h1> Applied Jobs</h1>
-<%= paginate @jobs_user %>
-<table>
+<%if user_signed_in? && (current_user.user_role.include?'Job Seeker') && (current_user.admin == false) %>
+<div class="container container-fluid">
+<hr>
+<h3> Applied Jobs</h3>
+<table class="table">
    <thead>
       <tr>
          <th>Job title</th>
          <th>Experience</th>
          <th>Salary</th>
-         <th colspan="3"></th>
+         <th> Show Job</th>
       </tr>
    </thead>
    <tbody>
@@ -41,11 +48,12 @@
          <td><%= job.job_title %></td>
          <td><%= job.experience %></td>
          <td><%= job.salary %></td>
-         <td><%= job.user_id %></td>
-         <td><%= link_to 'Show', job %></td>
+       
+         <td><%= link_to 'Show', job ,class:"btn btn-warning" %></td>
       </tr>
       <% end %>
    </tbody>
 </table>
-<%= paginate @jobs_user %>
+<%= paginate @jobs_user,theme:'my_custom_theme' %>
 <%end%>
+<div>
