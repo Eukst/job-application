@@ -1,0 +1,5 @@
+<%= form_with( url: apply_job_path, remote: true ,html:{method: :delete}) do |form| %>
+  <%= hidden_field_tag :user_id,current_user.id %>
+   <%= hidden_field_tag :job_id , @job.id%>
+<%= form.submit " Cancel" , class:"btn btn-primary"%> 
+<% end %>

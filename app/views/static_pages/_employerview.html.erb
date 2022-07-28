@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Jobs</h1>
-
+    <h1>Jobs Created</h1>
+<%# @jobs = Job.where(user_id:current_user.id)  %> <!-- for notes purpose -->
 <table>
   <thead>
     <tr>
       <th>Job title</th>
-      <th>Experience in Years</th>
+      <th>Experience</th>
       <th>Salary</th>
-      <th>User Id </th>
-      <th>Description </th>
+       <th>User ID</th>
+        <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +19,7 @@
         <td><%= job.experience %></td>
         <td><%= job.salary %></td>
         <td><%= job.user_id %></td>
-        <td><%= job.description %></td>
+         <td><%= job.description %></td>
         <td><%= link_to 'Show', job %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,8 +27,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Job', new_job_path %>
-<%= link_to 'Back To Home', root_path %>
