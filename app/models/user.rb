@@ -17,4 +17,5 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :address, :mobile_no, :city, :state, :user_role, presence: true
   validates :pincode, presence: true, format: { with: VALID_PIN_REGEX }, length: { is: 6 }
+  validates :mobile_no, length: { minimum: 10, maximum: 15 }
 end
