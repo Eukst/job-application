@@ -1,0 +1,33 @@
+<h4 style="text-decoration:underline">List Of Jobs</h4>
+ 
+<table class="table table-hover">
+  <thead>
+    <tr>
+     <th>User ID</th>
+      <th>Job title</th>
+      <th>Experience</th>
+      <th>Salary</th>
+      
+        <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+       <td><%= job.user_id %></td>
+        <td><%= job.job_title %></td>
+        <td><%= job.experience %></td>
+        <td><%= job.salary %></td>
+       
+         <td><%= job.description %></td>
+        <td><%= link_to 'Show', job ,class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_job_path(job) , class:"btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @jobs , theme: 'my_custom_theme'  %>
+

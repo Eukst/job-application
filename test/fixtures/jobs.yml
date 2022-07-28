@@ -1,10 +1,6 @@
 
 one:
-  job_title: MyString
-  experience: 9.99
-  salary: 9.99
-
-two:
+  id: 6
   job_title: MyString
   experience: 9.99
   salary: 9.99
