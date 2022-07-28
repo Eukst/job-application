@@ -12,8 +12,7 @@ class JobsController < ApplicationController
   # GET /jobs/1 or /jobs/1.json
   def show
     if user_signed_in? && (current_user.user_role.include? 'Employer')
-
-      @user_apply = @job.users # .where(id: apply_user_ids)
+      @user_apply = @job.users
       @user_apply_paginate = Kaminari.paginate_array(@user_apply).page(params[:page]).per(8)
     end
   end

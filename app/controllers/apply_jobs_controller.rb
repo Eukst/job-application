@@ -30,8 +30,6 @@ class ApplyJobsController < ApplicationController
 
   # delete apply_jobs/:id
   def destroy
-    p params[:user_id].to_i
-    p params[:job_id].to_i
     @apply_job = ApplyJob.find_by(user_id: params[:user_id].to_i, job_id: params[:job_id].to_i)
     @apply_job.destroy
     job = Job.find(params[:job_id].to_i)

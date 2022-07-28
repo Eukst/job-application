@@ -11,13 +11,13 @@ class StaticPagesController < ApplicationController
       apply_user_ids = ApplyJob.where('job_id IN (?)', jobs_ids).pluck(:user_id).uniq
       @user_apply = User.where(id: apply_user_ids)
     end
-
-    if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && (current_user.admin == false)
+    # current_user.admin == false or !current_user.admin
+    if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && !current_user.admin
       @jobs = Job.all
       @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(7)
     end
 
-    if user_signed_in? && (current_user.admin == true)
+    if user_signed_in? && current_user.admin
       @jobs = Job.all
       @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(7)
     end
