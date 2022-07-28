@@ -1,6 +1,6 @@
 # frozen_string_literal:true
 
-# controller to manage jobs 
+# controller to manage jobs
 class JobsController < ApplicationController
   before_action :set_job, only: %i[show edit update destroy]
 
@@ -12,16 +12,15 @@ class JobsController < ApplicationController
   # GET /jobs/1 or /jobs/1.json
   def show
     if user_signed_in? && (current_user.user_role.include? 'Employer')
-   
+
       @user_apply = @job.users # .where(id: apply_user_ids)
       @user_apply_paginate = Kaminari.paginate_array(@user_apply).page(params[:page]).per(8)
+    end
   end
-end
 
   # GET /jobs/new
   def new
     @job = current_user.jobs.new
-    
   end
 
   # GET /jobs/1/edit

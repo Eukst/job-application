@@ -1,34 +1,30 @@
-
-<div class="container container-fluid"> 
-      
-    <h4>Jobs Created</h4>
-<%= link_to "Create New Job ", new_job_path , class:"btn btn-primary"%>
-<br>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Job title</th>
-      <th>Experience</th>
-      <th>Salary</th>
-     
-        <th>Description</th>
-      <th colspan="3" class="text-center"> Options</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.job_title %></td>
-        <td><%= job.experience %></td>
-        <td><%= job.salary %></td>
-      
-         <td><%= job.description %></td>
-        <td><%= link_to 'Show', job  ,class:"btn btn-info"%></td>
-        <td><%= link_to 'Edit', edit_job_path(job) ,class:"btn btn-warning"%></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @jobs , theme: 'my_custom_theme' %></div>
+<div class="container container-fluid">
+   <h4>Jobs Created</h4>
+   <%= link_to "Create New Job ", new_job_path , class:"btn btn-primary"%>
+   <br>
+   <table class="table table-hover">
+      <thead>
+         <tr>
+            <th>Job title</th>
+            <th>Experience</th>
+            <th>Salary</th>
+            <th>Description</th>
+            <th colspan="3" class="text-center"> Options</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% @jobs.each do |job| %>
+         <tr>
+            <td><%= job.job_title %></td>
+            <td><%= job.experience %></td>
+            <td><%= job.salary %></td>
+            <td><%= job.description %></td>
+            <td><%= link_to 'Show', job  ,class:"btn btn-info"%></td>
+            <td><%= link_to 'Edit', edit_job_path(job) ,class:"btn btn-warning"%></td>
+            <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %></td>
+         </tr>
+         <% end %>
+      </tbody>
+   </table>
+   <%= paginate @jobs , theme: 'my_custom_theme' %>
+</div>

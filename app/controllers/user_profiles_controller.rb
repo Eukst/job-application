@@ -1,8 +1,10 @@
 # frozen_string_literal:true
 
-# comtroller to manage user profiles
+# controller to manage user profiles
 class UserProfilesController < ApplicationController
   before_action :set_user, only: %i[show destroy]
+
+  # user_profile_path  GET	/user_profiles/:id
   def show
     if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && (current_user.admin == false)
       user = User.find(current_user.id)
@@ -10,12 +12,13 @@ class UserProfilesController < ApplicationController
       @jobs_user = Kaminari.paginate_array(@jobs_user).page(params[:page]).per(5)
     end
     if user_signed_in? && (current_user.admin == true)
-      user=User.find(params[:id].to_i)
+      user = User.find(params[:id].to_i)
       @jobs_user = user.jobs
       @jobs_user = Kaminari.paginate_array(@jobs_user).page(params[:page]).per(5)
     end
   end
 
+  # DELETE	/user_profiles/:id user_profile_path
   def destroy
     @user.destroy
 

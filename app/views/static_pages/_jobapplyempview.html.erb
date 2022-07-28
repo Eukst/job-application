@@ -1,22 +1,20 @@
-    <h1>Jobs Created</h1>
-    <table>
-  <thead>
-    <tr>
-      <th>Name </th>
-      <th>Email</th>
-      <th>Mobile No.</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @user_apply.each do |user_apply| %>
+<h1>Jobs Created</h1>
+<table class="table table-hover">
+   <thead>
       <tr>
-        <td><%= user_apply.first_name %></td>
-        <td><%= user_apply.email %></td>
-        <td><%= user_apply.mobile_no %></td>
-      
+         <th>Name </th>
+         <th>Email</th>
+         <th>Mobile No.</th>
+         <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
+   </thead>
+   <tbody>
+      <% @user_apply.each do |user_apply| %>
+      <tr>
+         <td><%= user_apply.first_name %></td>
+         <td><%= user_apply.email %></td>
+         <td><%= user_apply.mobile_no %></td>
+      </tr>
+      <% end %>
+   </tbody>
 </table>

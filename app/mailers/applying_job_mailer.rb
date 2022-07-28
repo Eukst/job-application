@@ -1,7 +1,9 @@
 # frozen_string_literal:true
 
-# class Apply mailer for sending mail 
+# class Apply mailer for sending mail
 class ApplyingJobMailer < ApplicationMailer
+  
+  # sends mail to employer when user apply to job
   def apply(job, user)
     @job = job
     @user = user
@@ -11,6 +13,7 @@ class ApplyingJobMailer < ApplicationMailer
     mail to: @job.user.email, subject: subj
   end
 
+  # sends mail to employer when user cancel job application
   def cancel(job,user)
     @greeting = 'Hi'
     @job = job

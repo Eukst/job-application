@@ -1,57 +1,59 @@
 <div class="container container-fluid">
-<p id="notice"><%= notice %></p>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col" colspan=2>Job Details </th>
-     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Job ID:</th>
-      <td> <%= @job.id %> </td>
-    </tr>
+   <p id="notice"><%= notice %></p>
+   <table class="table">
+   <thead>
       <tr>
-      <th scope="row">Job title</th>
-      <td><%= @job.job_title %></td>
-    </tr>
+         <th scope="col" colspan=2>Job Details </th>
+      </tr>
+   </thead>
+   <tbody>
       <tr>
-      <th scope="row">Experience In Years</th>
-      <td>  <%= @job.experience %></td>
-    </tr>
+         <th scope="row">Job ID:</th>
+         <td> <%= @job.id %> </td>
+      </tr>
       <tr>
-      <th scope="row">Salary</th>
-      <td>  <%= @job.salary %></td>
-    </tr>
-        <tr>
-      <th scope="row">Description</th>
-      <td>  <%= @job.description %></td>
-    </tr>
+         <th scope="row">Job title</th>
+         <td><%= @job.job_title %></td>
+      </tr>
+      <tr>
+         <th scope="row">Experience In Years</th>
+         <td>  <%= @job.experience %></td>
+      </tr>
+      <tr>
+         <th scope="row">Salary</th>
+         <td>  <%= @job.salary %></td>
+      </tr>
+      <tr>
+         <th scope="row">Description</th>
+         <td>  <%= @job.description %></td>
+      </tr>
    </tbody>
    <table>
 </div>
 
 
+
 <% if user_signed_in?%>
-<% if current_user.user_role.include?"Employer" or current_user.admin?%>
-<%= link_to 'Edit', edit_job_path(@job) , class:"btn btn-warning"%> &nbsp;&nbsp;
-<!-- SHow all jobs has root path as we want employer can only the jobs create by himself-->
-<% if current_user.user_role.include?"Employer"%>
-<%= link_to 'Show All Jobs', root_path ,class:"btn btn-info ml-5" %>
-<%else%>
-<%= link_to 'Show All Jobs', jobs_path ,class:"btn btn-info ml-5" %>
-<%end%>
-<%else%>
-<%= link_to 'Back', root_path ,class:"btn btn-info ml-5" %>
-<%= render 'apply_jobs/apply_form' %>
-<%end%>
+  <% if current_user.user_role.include?"Employer" or current_user.admin?%>
+    <%= link_to 'Edit', edit_job_path(@job) , class:"btn btn-warning"%> &nbsp;&nbsp;
+    <!-- SHow all jobs has root path as we want employer can only the jobs create by himself-->
+    <% if current_user.user_role.include?"Employer"%>
+      <%= link_to 'Show All Jobs', root_path ,class:"btn btn-info ml-5" %>
+    <%else%>
+      <%= link_to 'Show All Jobs', jobs_path ,class:"btn btn-info ml-5" %>
+    <%end%>
+  <%else%>
+    <%= link_to 'Back', root_path ,class:"btn btn-info ml-5" %>
+    <%= render 'apply_jobs/apply_form' %>
+  <%end%>
 <%end%>
 
+
 <% if current_user.user_role.include?"Employer" or current_user.admin == true %>
-<%if @job.users.count != 0%>
-  <% if user_signed_in?%>
-    <% if current_user.user_role.include?"Employer" or current_user.admin == true %>
-      <%@user_apply = @job.users%>
+  <%if @job.users.count != 0%>
+    <% if user_signed_in?%>
+      <% if current_user.user_role.include?"Employer" or current_user.admin == true %>
+        <%@user_apply = @job.users%>
         <table class="table">
           <thead>
             <tr>
@@ -62,18 +64,19 @@
             </tr>
           </thead>
           <tbody>
-          <% @user_apply.each do |user_apply| %>
+            <% @user_apply.each do |user_apply| %>
             <tr>
               <td><%= user_apply.first_name %></td>
               <td><%= user_apply.email %></td>
               <td><%= user_apply.mobile_no %></td>
             </tr>
-          <% end %>
+            <% end %>
           </tbody>
-        </table>
-    <%end%>
+       </table>
+     <%end%>
+   <%end%>
+  <%else%>
+    <hr>
+    <h3> No Application Till now ...</h3>
   <%end%>
-<%else%>
-<hr><h3> No Application Till now ...</h3>
-<%end%>
 <%end%>

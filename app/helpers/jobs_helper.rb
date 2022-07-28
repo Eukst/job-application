@@ -1,6 +1,9 @@
+# frozen_string_literal:true
+
+# Job helper module
 module JobsHelper
   def get_user_id(job)
-    @job=job
+    @job = job
     if @job.new_record?
       current_user.id
     else
@@ -8,5 +11,3 @@ module JobsHelper
     end
   end
 end
-
-# job.new_record? ?  current_user.id :  job.id ;

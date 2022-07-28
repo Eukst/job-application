@@ -1,37 +1,32 @@
 <hr>
 <div class="container continer-fluid">
-<h3> All Jobs</h3>
-<table class="table table-hover table-bordered">
-   <thead>
-      <tr>
-         <th>Job title</th>
-         <th>Experience</th>
-         <th>Salary</th>
-         <th>Job Details</th>
-          <th>Application Status</th>
-         
-      </tr>
-   </thead>
-   <tbody>
-      <% @jobs.each do |job| %>
-      <tr>
-         <td><%= job.job_title %></td>
-         <td><%= job.experience %></td>
-         <td><%= job.salary %></td>
-         <td><%= link_to 'Show', job , class:"btn btn-warning" %></td>
-         <%if applied_to_job?(current_user.id,job.id) %>
-         <td><%= link_to 'Applied Already', job ,class:"btn btn-success"%></td>
-         <%else%>
-         <td><%= link_to 'Apply Now', job ,class:"btn btn-info"%></td>
-         <%end%>
-      </tr>
-      <% end %>
-   </tbody>
-</table>
-<%= paginate @jobs , theme: 'my_custom_theme'%>
+   <h3> All Jobs</h3>
+   <table class="table table-hover table-bordered">
+      <thead>
+         <tr>
+            <th>Job title</th>
+            <th>Experience</th>
+            <th>Salary</th>
+            <th>Job Details</th>
+            <th>Application Status</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% @jobs.each do |job| %>
+         <tr>
+            <td><%= job.job_title %></td>
+            <td><%= job.experience %></td>
+            <td><%= job.salary %></td>
+            <td><%= link_to 'Show', job , class:"btn btn-warning" %></td>
+            <%if applied_to_job?(current_user.id,job.id) %>
+            <td><%= link_to 'Applied Already', job ,class:"btn btn-success"%></td>
+            <%else%>
+            <td><%= link_to 'Apply Now', job ,class:"btn btn-info"%></td>
+            <%end%>
+         </tr>
+         <% end %>
+      </tbody>
+   </table>
+   <%= paginate @jobs , theme: 'my_custom_theme'%>
 </div>
 <hr>
-
-
-
-
