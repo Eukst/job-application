@@ -8,8 +8,6 @@ module ApplyJobHelper
     return false if @apply_job.nil?
 
     true
-
- 
   end
 
   # Return a user already applied for job or not (takes two parameter)
@@ -18,6 +16,5 @@ module ApplyJobHelper
     return false if @apply_job.nil?
 
     true
-  
   end
 end
