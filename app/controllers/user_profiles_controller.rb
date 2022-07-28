@@ -9,6 +9,11 @@ class UserProfilesController < ApplicationController
       @jobs_user = user.jobs
       @jobs_user = Kaminari.paginate_array(@jobs_user).page(params[:page]).per(5)
     end
+    if user_signed_in? && (current_user.admin == true)
+      user=User.find(params[:id].to_i)
+      @jobs_user = user.jobs
+      @jobs_user = Kaminari.paginate_array(@jobs_user).page(params[:page]).per(5)
+    end
   end
 
   def destroy
