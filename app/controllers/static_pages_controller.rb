@@ -15,8 +15,12 @@ class StaticPagesController < ApplicationController
 
     if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && (current_user.admin == false)
       @jobs = Job.all
+      @jobs =Kaminari.paginate_array(@jobs).page(params[:page]).per(8) 
 
-      @jobs_paginate_jobseeker = Job.page(params[:page]).per(5)
+    end
+    if user_signed_in? && (current_user.admin == true)
+      @jobs = Job.all
+      @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(8)
 
     end
   end

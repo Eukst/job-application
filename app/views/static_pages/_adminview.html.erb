@@ -1,14 +1,14 @@
     <h1>Jobs Created</h1>
-<% @jobs = Job.all %> <!-- for notes purpose -->
-<%@jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(3)%>
-<%= paginate @jobs %>
-<table>
+ 
+<%= paginate @jobs%>
+<table class="table">
   <thead>
     <tr>
+     <th>User ID</th>
       <th>Job title</th>
       <th>Experience</th>
       <th>Salary</th>
-       <th>User ID</th>
+      
         <th>Description</th>
       <th colspan="3"></th>
     </tr>
@@ -17,10 +17,11 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
+       <td><%= job.user_id %></td>
         <td><%= job.job_title %></td>
         <td><%= job.experience %></td>
         <td><%= job.salary %></td>
-        <td><%= job.user_id %></td>
+       
          <td><%= job.description %></td>
         <td><%= link_to 'Show', job %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>

@@ -84,8 +84,8 @@
 <%if user_signed_in?%>
 
   <% if current_user.admin? %>
-    <h1> Welcome Admin </h1>
-   <%= render partial:"static_pages/adminview" %>
+    <h3> Welcome Admin </h3>
+   <%= render partial:"static_pages/adminview", :locals => {:jobs => @jobs,:jobs_paginate_admin => @jobs_paginate_admin} %>
   <%else%>
     <%if current_user.user_role.include?"Job Seeker"%>
       <%= render partial:"static_pages/jobseekerview", :locals => {:jobs => @jobs,:jobs_paginate_jobseeker => @jobs_paginate_jobseeker} %>

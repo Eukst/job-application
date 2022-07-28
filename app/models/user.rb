@@ -3,6 +3,7 @@
 # User class
 class User < ApplicationRecord
   paginates_per 5
+  max_paginates_per 7
   has_many :jobs, dependent: :destroy
   has_many :apply_jobs
   has_many :jobs, through: :apply_jobs
