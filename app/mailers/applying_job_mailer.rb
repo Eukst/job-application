@@ -1,3 +1,6 @@
+# frozen_string_literal:true
+
+# class Apply mailer for sending mail 
 class ApplyingJobMailer < ApplicationMailer
   def apply(job, user)
     @job = job
