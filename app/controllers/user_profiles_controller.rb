@@ -6,12 +6,12 @@ class UserProfilesController < ApplicationController
 
   # user_profile_path  GET	/user_profiles/:id
   def show
-    if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && (current_user.admin == false)
+    if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && (!current_user.admin)
       user = User.find(current_user.id)
       @jobs_user = user.jobs
       @jobs_user = Kaminari.paginate_array(@jobs_user).page(params[:page]).per(5)
     end
-    if user_signed_in? && (current_user.admin == true)
+    if user_signed_in? && (current_user.admin)
       user = User.find(params[:id].to_i)
       @jobs_user = user.jobs
       @jobs_user = Kaminari.paginate_array(@jobs_user).page(params[:page]).per(5)
