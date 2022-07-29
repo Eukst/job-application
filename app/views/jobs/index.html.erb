@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>Jobs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Job title</th>
@@ -21,15 +21,14 @@
         <td><%= job.salary %></td>
         <td><%= job.user_id %></td>
         <td><%= job.description %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', job ,class:"btn btn-info"%></td>
+        <td><%= link_to 'Edit', edit_job_path(job) ,class:"btn btn-warning"%></td>
+        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @jobs , theme:'my_custom_theme'%>
 <br>
 
-<%= link_to 'New Job', new_job_path %>
-<%= link_to 'Back To Home', root_path %>
+<%= link_to 'Back To Home', root_path , class:"btn btn-info"%>

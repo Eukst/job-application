@@ -7,6 +7,7 @@ class JobsController < ApplicationController
   # GET /jobs or /jobs.json
   def index
     @jobs = Job.all
+    @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(7)
   end
 
   # GET /jobs/1 or /jobs/1.json
