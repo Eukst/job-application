@@ -1,6 +1,24 @@
 
 one:
-  id: 6
+  id: 1
   job_title: MyString
   experience: 9.99
   salary: 9.99
+  description: New job
+  user_id: 2
+
+two:
+  id: 2
+  job_title: MyString
+  experience: 9.99
+  salary: 9.99
+  description: New job
+  user_id: 2
+
+three:
+  id: 3
+  job_title: MyString
+  experience: 9.99
+  salary: 9.99
+  description: New job
+  user_id: 2
