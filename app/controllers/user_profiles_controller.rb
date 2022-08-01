@@ -4,7 +4,6 @@
 class UserProfilesController < ApplicationController
   before_action :set_user, only: %i[show destroy]
   before_action :authenticate_user!
-
   # user_profile_path  GET	/user_profiles/:id
   def show
     if user_signed_in? && (current_user.user_role.include? 'Job Seeker') && (!current_user.admin)
