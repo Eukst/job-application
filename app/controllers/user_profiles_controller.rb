@@ -21,7 +21,6 @@ class UserProfilesController < ApplicationController
   # DELETE	/user_profiles/:id user_profile_path
   def destroy
     @user.destroy
-
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'user was successfully destroyed.' }
       format.json { head :no_content }
