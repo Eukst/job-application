@@ -2,6 +2,7 @@
 
 # Apply jobs controller for apply and destroy job
 class ApplyJobsController < ApplicationController
+  before_action :authenticate_user!
   # post apply_jobs
   def create
     if user_signed_in? && (current_user.user_role.include? 'Job Seeker')

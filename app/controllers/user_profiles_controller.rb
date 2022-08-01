@@ -3,6 +3,7 @@
 # controller to manage user profiles
 class UserProfilesController < ApplicationController
   before_action :set_user, only: %i[show destroy]
+  before_action :authenticate_user!
 
   # user_profile_path  GET	/user_profiles/:id
   def show
