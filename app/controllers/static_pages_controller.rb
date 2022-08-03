@@ -2,6 +2,7 @@
 
 # class for static pages
 class StaticPagesController < ApplicationController
+  before_action :authenticate_user!
   # root_path  static_pages/home
   def home
     if user_signed_in? && (current_user.user_role.include? 'Employer')

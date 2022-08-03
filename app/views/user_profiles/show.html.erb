@@ -32,7 +32,7 @@
 <%if user_signed_in? && (current_user.user_role.include?'Job Seeker') && (!current_user.admin) %>
 <div class="container container-fluid">
 <hr>
-<h3> Applied Jobs</h3>
+<h2>Applied Jobs</h2>
 <table class="table">
    <thead>
       <tr>
@@ -61,7 +61,7 @@
 <%if user_signed_in? && current_user.admin %>
 <div class="container container-fluid">
 <hr>
-<h3> Applied Jobs</h3>
+<h2>Applied Jobs Admin View</h2>
 <table class="table">
    <thead>
       <tr>

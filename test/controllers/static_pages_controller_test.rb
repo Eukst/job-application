@@ -22,4 +22,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get static_pages_about_url
     assert_response :success
   end
+  test 'should get user dashbord' do
+    get static_pages_dashbord_users_path
+    assert_response :success
+  end
 end

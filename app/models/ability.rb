@@ -29,7 +29,11 @@ class Ability
     end
     if !user.admin? && (user.user_role.include? 'Job Seeker')
       can :index, Job
-      can :show, Job
+      can :show, user_profiles,User do |user|
+        user.id = user.id
+      
+      end
+
     end
   end
 end

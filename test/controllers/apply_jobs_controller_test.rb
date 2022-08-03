@@ -7,8 +7,4 @@ class ApplyJobsControllerTest < ActionDispatch::IntegrationTest
     post apply_jobs_path
     assert_response :success
   end
-
-  test 'should get destroy' do
- 
-  end
 end

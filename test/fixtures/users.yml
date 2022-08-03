@@ -36,3 +36,16 @@ user3:
   pincode: '123456'
   mobile_no: 1234567890
   city: 'jaipur'
+
+admin:
+  id: 4
+  first_name: 'admin'
+  last_name: 'User'
+  email: 'admin1@yopmail.com'
+  admin: true
+  address: 'Ongraph technologies jaipur'
+  state: 'Rajasthan'
+  user_role: 'Job Seeker'
+  pincode: '123456'
+  mobile_no: 1234567890
+  city: 'jaipur'
