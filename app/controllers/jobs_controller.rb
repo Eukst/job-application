@@ -6,11 +6,14 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
+    authorize! :index, @user
     @jobs = Job.all
+    @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(7)
   end
 
   # GET /jobs/1 or /jobs/1.json
   def show
+    authorize! :show ,@job
     if user_signed_in? && (current_user.user_role.include? 'Employer')
       @user_apply = @job.users
       @user_apply_paginate = Kaminari.paginate_array(@user_apply).page(params[:page]).per(8)
@@ -23,7 +26,9 @@ class JobsController < ApplicationController
   end
 
   # GET /jobs/1/edit
-  def edit; end
+  def edit
+    authorize! :edit, @job
+  end
 
   # POST /jobs or /jobs.json
   def create
@@ -55,6 +60,7 @@ class JobsController < ApplicationController
 
   # DELETE /jobs/1 or /jobs/1.json
   def destroy
+    authorize! :destroy, @job
     @job.destroy
 
     respond_to do |format|
